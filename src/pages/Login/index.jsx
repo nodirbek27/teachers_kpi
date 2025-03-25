@@ -78,39 +78,39 @@ const Login = () => {
               if (resUser.data) {
                 const [data] = resUser.data;
                 const jsonData = JSON.stringify({
-                  id: Encryption(data.id, import.meta.env.REACT_APP_SHIFRED_ID),
+                  id: Encryption(data.id, import.meta.env.VITE_SHIFRED_ID),
                   username: Encryption(
                     values.username,
-                    import.meta.env.REACT_APP_SHIFRED_USERNAME
+                    import.meta.env.VITE_SHIFRED_USERNAME
                   ),
                   password: Encryption(
                     values.password,
-                    import.meta.env.REACT_APP_SHIFRED_PASSWORD
+                    import.meta.env.VITE_SHIFRED_PASSWORD
                   ),
                   remember: values.remember,
                   first_name: Encryption(
                     data?.first_name,
-                    import.meta.env.REACT_APP_SHIFRED_FIRSTNAME
+                    import.meta.env.VITE_SHIFRED_FIRSTNAME
                   ),
                   last_name: Encryption(
                     data?.last_name,
-                    import.meta.env.REACT_APP_SHIFRED_LASTNAME
+                    import.meta.env.VITE_SHIFRED_LASTNAME
                   ),
                   token: Encryption(
                     res?.data?.access,
-                    import.meta.env.REACT_APP_ENCRYPTION_KEY
+                    import.meta.env.VITE_ENCRYPTION_KEY
                   ),
                   refToken: Encryption(
                     res?.data?.refresh,
-                    import.meta.env.REACT_APP_ENCRYPTION_REFKEY
+                    import.meta.env.VITE_ENCRYPTION_REFKEY
                   ),
                   role: Encryption(
                     data?.role,
-                    import.meta.env.REACT_APP_SHIFRED_ROLE
+                    import.meta.env.VITE_SHIFRED_ROLE
                   ),
                   fakultet: Encryption(
                     data?.fakultet?.id,
-                    import.meta.env.REACT_APP_SHIFRED_FAKULTET
+                    import.meta.env.VITE_SHIFRED_FAKULTET
                   ),
                   endRefToken: formattedExpiration,
                 });
@@ -154,11 +154,11 @@ const Login = () => {
       formik.setValues({
         username: Decryption(
           data?.username,
-          import.meta.env.REACT_APP_SHIFRED_USERNAME
+          import.meta.env.VITE_SHIFRED_USERNAME
         ),
         password: Decryption(
           data?.password,
-          import.meta.env.REACT_APP_SHIFRED_PASSWORD
+          import.meta.env.VITE_SHIFRED_PASSWORD
         ),
         remember: formik.values.remember,
       });
@@ -174,7 +174,7 @@ const Login = () => {
   }, [data]);
 
   return (
-    <div className="w-full h-[100vh] flex justify-center items-center ">
+    <div className="w-[100vw] h-[100vh] flex justify-center items-center ">
       <div className="flex flex-col justify-center gap-2 border rounded-md shadow-2xl p-4 -mt-20">
         <div className="w-[300px] h-full">
           <div className="flex justify-center">
@@ -184,9 +184,9 @@ const Login = () => {
               alt="logo"
             />
           </div>
-          <h1 className="text-center font-bold text-[1rem] lg:text-[1.1rem]">
+          <h2 className="text-center font-bold text-[1.2rem] lg:text-[1.4rem]">
             Teachers KPI
-          </h1>
+          </h2>
         </div>
         <form
           className="w-[300px] flex flex-col gap-2"
@@ -262,7 +262,7 @@ const Login = () => {
           </div>
           <button
             type="submit"
-            className={`w-full btn btn-sm text-white ${
+            className={`w-full btn btn-sm text-[#222] ${
               errMessage ? "btn-error" : "btn-success"
             }`}
           >
